@@ -29,10 +29,13 @@ public class FootstepSound : MonoBehaviour
                 break;
 
             case "Rug":
-                if (foostepsOnRug.Length > 0)
-                    audioSource.PlayOneShot(foostepsOnRug[Random.Range(0, foostepsOnRug.Length)]);
-                break;
+                {
+                    audioSource.volume = Random.Range(0.4f, 0.6f);
+                    if (foostepsOnRug.Length > 0)
+                        audioSource.PlayOneShot(foostepsOnRug[Random.Range(0, foostepsOnRug.Length)]);
+                    break;
 
+                }
             default:
                 break;
         }
