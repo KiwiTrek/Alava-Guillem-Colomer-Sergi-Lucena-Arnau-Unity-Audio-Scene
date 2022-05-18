@@ -8,16 +8,26 @@ public class Door : MonoBehaviour
     private bool IsRotatingDoor = true;
     [SerializeField]
     private float Speed = 1f;
+
     [Header("Rotation Configs")]
     [SerializeField]
     private float RotationAmount = 90f;
     [SerializeField]
     private float ForwardDirection = 0;
+
     [Header("Sliding Configs")]
     [SerializeField]
     private Vector3 SlideDirection = Vector3.back;
     [SerializeField]
     private float SlideAmount = 1.9f;
+
+    [Header("SFX")]
+    [SerializeField]
+    private AudioSource soundSource;
+    [SerializeField]
+    private AudioClip openDoor;
+    [SerializeField]
+    private AudioClip closeDoor;
 
     private Vector3 StartRotation;
     private Vector3 StartPosition;
@@ -59,6 +69,9 @@ public class Door : MonoBehaviour
     {
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation;
+
+        soundSource.pitch = Random.Range(0.9f, 1.1f);
+        soundSource.PlayOneShot(openDoor);
 
         if (ForwardAmount >= ForwardDirection)
         {
@@ -121,6 +134,8 @@ public class Door : MonoBehaviour
         Quaternion endRotation = Quaternion.Euler(StartRotation);
 
         IsOpen = false;
+        soundSource.pitch = Random.Range(0.9f, 1.1f);
+        soundSource.PlayOneShot(closeDoor);
 
         float time = 0;
         while (time < 1)

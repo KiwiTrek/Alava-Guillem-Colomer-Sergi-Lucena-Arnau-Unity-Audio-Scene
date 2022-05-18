@@ -13,7 +13,7 @@ public class FootstepSound : MonoBehaviour
     void PlayFootstepSound()
     {
         AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.volume = Random.Range(0.9f, 1.0f);
+        audioSource.volume = Random.Range(0.85f, 1.0f);
         audioSource.pitch = Random.Range(0.9f, 1.1f);
 
         switch (material)
